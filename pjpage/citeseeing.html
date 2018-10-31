@@ -1,0 +1,112 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AutomaticPaperSummaryGeneration</title>
+    <link rel="stylesheet" type="text/css" href="./pvg.css">
+    <link rel="shortcut icon" type="image/png" href="./img/cc_logo_1_crop.png">
+</head>
+
+<body>
+<script type="text/javascript" src="./header.js"></script>
+
+<style>
+a.myclass {
+    color:#DE382D;
+    text-decoration: underline
+}
+</style>
+
+<style>
+a.link {
+    text-decoration: underline
+}
+</style>
+
+<header id="header">
+    <div class="container">
+        <div class="header">
+            <h1 align="center" style="font-size: 30pt;"><b>Automatic Paper Summary Generation</b></h1><br/>
+        </div>
+    </div>
+</header>
+
+<center><img src="./img/teaser.png" style="width: 100%;"/></center>
+
+<h2>Abstract</h2>
+<p>
+Due to the recent boom in artificial intelligence (AI) research, including  computer vision (CV), 
+it has become impossible for researchers in these fields  to keep up with the exponentially increasing number of manuscripts. 
+In response to this situation, this paper proposes the paper summary generation (PSG) task using a simple but effective method to automatically generate an academic paper summary from raw PDF data. 
+We realized PSG by combination of vision-based  supervised components detector and language-based unsupervised important  sentence extractor, which is applicable for a trained format of manuscripts. 
+We show the quantitative evaluation of ability of simple vision-based components extraction, and the qualitative evaluation that our system can extract both visual item and sentence that are helpful for understanding. 
+After processing via our PSG, the 979 manuscripts accepted by the Conference on Computer Vision and Pattern Recognition (CVPR) 2018 are available. 
+It is believed that the proposed method will provide a better way for researchers to stay caught with important academic papers.</p>
+
+<br>
+<h2>Paper</h2>
+<ul>
+<a href="https://sites.google.com/site/shinatoyamamoto/"  class="">Shintaro Yamamoto*</a>, 
+<a href=""  class="">Yoshihiro Fukuhara*</a>, 
+<a href=""  class="">Ryota Suzuki</a>, 
+<a href=""  class="">Shigeo Morishima</a>, 
+<a href="http://hirokatsukataoka.net/"  class="">Hirokatsu Kataoka</a>. <br>
+<b>Automatic Paper Summary Generation from Visual and Textual Information.</b> <br>
+In ICMV, 2018. (* indicates equal contribution)<br>
+<a href="" class="myclass">[paper]</a> 
+&nbsp;&nbsp; <a href="bibtex.bib"  class="myclass">[bibtex]</a>  
+<!--&nbsp;&nbsp; <a href="Im2Pano3D_talk.pdf"  class="myclass">[slide(.pdf)]</a> -->
+
+</ul>
+
+<br>
+<h2>Overview</h2>
+We divided the task into vision-based paper component detection and language-based important sentence extraction. 
+In the vision task, we detect academic paper components {title, authors, abstract, figures, and tables} with <a href="https://arxiv.org/pdf/1612.08242.pdf"  class="myclass">YOLOv2</a>, and simultaneously select the most important figure (MIF) in the paper. 
+In the language task, we summarize the sentences of the academic paper with <a herf="http://www.di.ubi.pt/~jpaulo/competence/general/%281958%29Luhn.pdf" class="myclass">Luhn's method</a>. 
+Finally, we generate a single-page summary that combines the components collected by the vision- and language-based methods.
+<br><br><br>
+<center>
+        <img src="./img/overview.png" style="width: 100%;"/>
+</center>
+
+<br><br><br>
+<h2>Example Results</h2>
+
+<ul>
+<li>Chen et.al. <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf" class="myclass">CartoonGAN: Generative Adversarial Networks for Photo Cartoonization.</a> In CVPR 2018. </li>
+</ul>
+
+<br>
+<center><img src="./img/CartoonGAN.jpg" style="width: 100%;"/></center>
+
+
+<br><br><br><br>
+<ul>
+<li>Cao et.al. <a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0732.pdf" class="myclass">Visual Question Reasoning on General Dependency Tree.</a> In CVPR 2018. </li>
+</ul>
+
+<br>
+<center><img src="./img/VisualQuestionReasoning.jpg" style="width: 100%;"/></center>
+
+
+<br><br>
+<ul>
+<li>Grabner et.al. <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Grabner_3D_Pose_Estimation_CVPR_2018_paper.pdf" class="myclass">3D Pose Estimation and 3D Model Retrieval for Objects in the Wild.</a> In CVPR 2018. </li>
+</ul>
+
+<br>
+<center><img src="./img/3DPoseEstimation.jpg" style="width: 100%;"/></center>
+
+<h2>Download</h2>
+<ul>
+    <li>
+        Summarization results of CVPR 2018 (including 979 manuscripts).<br>
+        <a href="https://drive.google.com/open?id=1xJy-MRn9QGWo4rnYm1Mv49jxwdKrwz31"  class="myclass">[Google Drive (921.9MB)]</a>
+    </li>
+</ul>
+
+<br><br><br>
+<script type="text/javascript" src="./footer.js"></script>
+</body></html>
