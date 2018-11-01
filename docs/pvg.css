@@ -33,7 +33,8 @@ body
 {
     margin-left: auto;
     margin-right: auto;
-    width: 980px;
+    width: 100%;
+	max-width: 980px;
 	
 	background-image:url('');
 	background-repeat:repeat-x;
