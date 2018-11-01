@@ -34,7 +34,10 @@ body
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+	box-sizing:border-box;
 	max-width: 980px;
+	padding-left: 10px;
+	padding-right: 10px;
 	
 	background-image:url('');
 	background-repeat:repeat-x;
