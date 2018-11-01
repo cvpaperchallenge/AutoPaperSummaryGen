@@ -116,16 +116,10 @@ body
   max-height: 80px !important; 
 }
 
-a:visited, a:link {
-	text-decoration: none;
-	color: #000000;
-	border-color: #CCCCCC;
-	border-bottom-width: 1px;
-	border-left-width: 0px;
-	border-right-width: 0px;
-	border-top-width: 0px;
+a{
+	color:#DE382D;
+	text-decoration: underline
 }
 a:hover {
-	color:#DE382D;
 	font-weight: bold;
 }

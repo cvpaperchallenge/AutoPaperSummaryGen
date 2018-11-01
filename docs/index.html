@@ -1,38 +1,98 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AutomaticPaperSummaryGeneration</title>
+	<title>Automatic Paper Summary Generation</title>
+	
+	<script>
+	function print_code(rawstr){
+		document.write(String.raw(rawstr).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/(^(\r?\n)+|(\r?\n)+$)/g,'').replace(/\r?\n/g,'<br />'));
+	};
+	</script>
     <link rel="stylesheet" type="text/css" href="./pvg.css">
     <link rel="shortcut icon" type="image/png" href="./img/cc_logo_1_crop.png">
+	<style>
+	h1{
+		text-align:center;
+		font-size: 30pt;
+		font-weight: bold;
+		margin-bottom: 2em;
+	}
+	.paper_info{
+		margin-left: 2em;
+	}
+	.figure,.teaser{
+		text-align: center;
+	}
+	.figure>img,.teaser>img{
+		width: 100%;
+		height: auto;
+	}
+	
+	h2,h3{
+		margin-top: 2em;
+	}
+	p,table,pre,.figure{
+		margin-top: 2em;
+	}
+	h1+p,h2+p,h3+p{
+		margin-top: 0;
+	}
+	p+p{
+		margin-top: 1ex;
+	}
+	
+	.paper_info>.authors{
+	}
+	.paper_info>.title{
+		font-weight: bold;
+	}
+	.links>a~a{
+		margin-left: 1ex;
+	}
+	
+	table{
+		border-collapse: collapse;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	td,th{
+		padding: 5px;
+		border: 1px solid black;
+	}
+	th{
+		background-color:#eee;
+		font-weight: initial;
+	}
+	
+	pre{
+		border: 1px solid black;
+		background-color: #fafafa;
+		word-break: break-word;
+		white-space: pre-line;
+		padding: 10px;
+		line-height: 1.3em;
+	}
+	pre.dark{
+		border: 1px solid black;
+		background-color: #454545;
+		color: white;
+	}
+	
+	.header *{
+		margin: initial;
+	}
+	.footer *{
+		margin: initial;
+	}
+	</style>
 </head>
 
 <body>
 <script type="text/javascript" src="./header.js"></script>
 
-<style>
-a.myclass {
-    color:#DE382D;
-    text-decoration: underline
-}
-</style>
+<h1>Automatic Paper Summary Generation</h1>
 
-<style>
-a.link {
-    text-decoration: underline
-}
-</style>
-
-<header id="header">
-    <div class="container">
-        <div class="header">
-            <h1 align="center" style="font-size: 30pt;"><b>Automatic Paper Summary Generation</b></h1><br/>
-        </div>
-    </div>
-</header>
-
-<center><img src="./img/teaser.png" style="width: 100%;"/></center>
+<p class="teaser"><img src="./img/teaser.png" /></p>
 
 <h2>Abstract</h2>
 <p>
@@ -42,71 +102,100 @@ In response to this situation, this paper proposes the paper summary generation 
 We realized PSG by combination of vision-based  supervised components detector and language-based unsupervised important  sentence extractor, which is applicable for a trained format of manuscripts. 
 We show the quantitative evaluation of ability of simple vision-based components extraction, and the qualitative evaluation that our system can extract both visual item and sentence that are helpful for understanding. 
 After processing via our PSG, the 979 manuscripts accepted by the Conference on Computer Vision and Pattern Recognition (CVPR) 2018 are available. 
-It is believed that the proposed method will provide a better way for researchers to stay caught with important academic papers.</p>
+It is believed that the proposed method will provide a better way for researchers to stay caught with important academic papers.
+</p>
 
-<br>
 <h2>Paper</h2>
-<ul>
-<a href="https://sites.google.com/site/shinatoyamamoto/"  class="">Shintaro Yamamoto*</a>, 
-<a href=""  class="">Yoshihiro Fukuhara*</a>, 
-<a href=""  class="">Ryota Suzuki</a>, 
-<a href=""  class="">Shigeo Morishima</a>, 
-<a href="http://hirokatsukataoka.net/"  class="">Hirokatsu Kataoka</a>. <br>
-<b>Automatic Paper Summary Generation from Visual and Textual Information.</b> <br>
-In ICMV, 2018. (* indicates equal contribution)<br>
-<a href="" class="myclass">[paper]</a> 
-&nbsp;&nbsp; <a href="bibtex.bib"  class="myclass">[bibtex]</a>  
-<!--&nbsp;&nbsp; <a href="Im2Pano3D_talk.pdf"  class="myclass">[slide(.pdf)]</a> -->
+<p class="paper_info">
+<span class="authors">
+	<a href="https://sites.google.com/site/shinatoyamamoto/">Shintaro Yamamoto</a>*, 
+	<a href="">Yoshihiro Fukuhara</a>*, 
+	<a href="">Ryota Suzuki</a>, 
+	<a href="">Shigeo Morishima</a>, 
+	<a href="http://hirokatsukataoka.net/">Hirokatsu Kataoka</a>.
+</span><br />
+<span class="title">
+	Automatic Paper Summary Generation from Visual and Textual Information
+</span>.<br />
+<span class="etc">
+	In ICMV, 2018. (* indicates equal contribution)
+</span></br>
+<span class="links">
+	<a href="">[paper]</a>
+	<a href="./bibtex.bib">[bibtex]</a>  
+	<!--<a href="Im2Pano3D_talk.pdf">[slide(.pdf)]</a> -->
+</span>
+</p>
 
-</ul>
-
-<br>
 <h2>Overview</h2>
+<p>
 We divided the task into vision-based paper component detection and language-based important sentence extraction. 
-In the vision task, we detect academic paper components {title, authors, abstract, figures, and tables} with <a href="https://arxiv.org/pdf/1612.08242.pdf"  class="myclass">YOLOv2</a>, and simultaneously select the most important figure (MIF) in the paper. 
-In the language task, we summarize the sentences of the academic paper with <a href="http://courses.ischool.berkeley.edu/i256/f06/papers/luhn58.pdf" class="myclass">Luhn's method</a>.
+In the vision task, we detect academic paper components {title, authors, abstract, figures, and tables} with <a href="https://arxiv.org/pdf/1612.08242.pdf">YOLOv2</a>, and simultaneously select the most important figure (MIF) in the paper. 
+In the language task, we summarize the sentences of the academic paper with <a href="http://courses.ischool.berkeley.edu/i256/f06/papers/luhn58.pdf">Luhn's method</a>.
 Finally, we generate a single-page summary that combines the components collected by the vision- and language-based methods.
-<br><br><br>
-<center>
-        <img src="./img/overview.png" style="width: 100%;"/>
-</center>
+</p>
 
-<br><br><br>
+<p class="figure"><img src="./img/overview.png" /></p>
+
+<!--
+<pre class="dark">
+<script>
+print_code`
+for(int i=0;i<a>;++i) printf("%d\n",i);
+for(int i=0;i<a>;++i) printf("%d\n",i);
+for(int i=0;i<a>;++i) printf("%d\n",i);
+`;
+</script>
+</pre>
+-->
+
+<!--
+<table>
+<caption>hoge</caption>
+<tbody>
+<tr>
+<th>1</th><th>2</th><th>3</th>
+</tr>
+<tr>
+<th>4</th><td>5</td><td>6</td>
+</tr>
+<tr>
+<th>7</th><td>8</td><td>9</td>
+</tr>
+</tbody>
+</table>
+-->
+
 <h2>Example Results</h2>
 
 <ul>
-<li>Chen et.al. <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf" class="myclass">CartoonGAN: Generative Adversarial Networks for Photo Cartoonization.</a> In CVPR 2018. </li>
+<li>Chen et.al. <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf">CartoonGAN: Generative Adversarial Networks for Photo Cartoonization.</a> In CVPR 2018. </li>
 </ul>
 
-<br>
-<center><img src="./img/CartoonGAN.jpg" style="width: 100%;"/></center>
+<p class="figure"><img src="./img/CartoonGAN.jpg" /></p>
 
-
-<br><br><br><br>
 <ul>
-<li>Cao et.al. <a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0732.pdf" class="myclass">Visual Question Reasoning on General Dependency Tree.</a> In CVPR 2018. </li>
+<li>Cao et.al. <a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0732.pdf">Visual Question Reasoning on General Dependency Tree.</a> In CVPR 2018. </li>
 </ul>
 
-<br>
-<center><img src="./img/VisualQuestionReasoning.jpg" style="width: 100%;"/></center>
+<p class="figure"><img src="./img/VisualQuestionReasoning.jpg" /></p>
 
-
-<br><br>
 <ul>
-<li>Grabner et.al. <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Grabner_3D_Pose_Estimation_CVPR_2018_paper.pdf" class="myclass">3D Pose Estimation and 3D Model Retrieval for Objects in the Wild.</a> In CVPR 2018. </li>
+<li>Grabner et.al. <a href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Grabner_3D_Pose_Estimation_CVPR_2018_paper.pdf">3D Pose Estimation and 3D Model Retrieval for Objects in the Wild.</a> In CVPR 2018. </li>
 </ul>
 
-<br>
-<center><img src="./img/3DPoseEstimation.jpg" style="width: 100%;"/></center>
+<p class="figure"><img src="./img/3DPoseEstimation.jpg" /></p>
 
 <h2>Download</h2>
 <ul>
     <li>
-        Summarization results of all CVPR 2018 proceedings (979 papers).<br>
-        <a href="https://drive.google.com/open?id=1xJy-MRn9QGWo4rnYm1Mv49jxwdKrwz31"  class="myclass">[Google Drive (921.9MB)]</a>
+        Summarization results of all CVPR 2018 proceedings (979 papers).<br />
+		<span class="links">
+        <a href="https://drive.google.com/open?id=1xJy-MRn9QGWo4rnYm1Mv49jxwdKrwz31">[Google Drive (921.9MB)]</a>
+		</span>
     </li>
 </ul>
 
-<br><br><br>
 <script type="text/javascript" src="./footer.js"></script>
-</body></html>
+</body>
+</html>
